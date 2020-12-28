@@ -148,7 +148,7 @@ public class ParkingLotTest
             System.out.println("Now testing getNumCars method");
             try
             {
-                Method m = c.getDeclaredMethod("getNumCars", null);
+                Method m = c.getDeclaredMethod("getNumCars");
                 int tempNum = (int)m.invoke(t1);
                 if(tempNum != 70)
                     failure("The numCars is " + tempNum +  " and should be " + cArgs[0]);
@@ -171,7 +171,7 @@ public class ParkingLotTest
                 t2 = constructor.newInstance(cArgs);
                 Method m = c.getDeclaredMethod("setNumCars", int.class);
                 m.invoke(t2, 90);
-                m = c.getDeclaredMethod("getNumCars", null);
+                m = c.getDeclaredMethod("getNumCars");
                 Object tempNum = m.invoke(t2);
             }
             catch (NoSuchMethodException e)
@@ -184,7 +184,7 @@ public class ParkingLotTest
         if(!failed)
         {
             try {
-                Method m = c.getDeclaredMethod("getNumCars", null);
+                Method m = c.getDeclaredMethod("getNumCars");
                 int tempNum = (int)m.invoke(t2);
                 if (tempNum != 90)
                     failure("setNumCars is " + tempNum + " but should be 90");
@@ -203,7 +203,7 @@ public class ParkingLotTest
                 Object obj = constructor.newInstance(cArgs);
                 Method m = c.getDeclaredMethod("setNumCars", int.class);
                 m.invoke(obj, 80000);
-                m = c.getDeclaredMethod("getNumCars", null);
+                m = c.getDeclaredMethod("getNumCars");
                 int tempNum = (int)m.invoke(obj);
 
                 if (tempNum != 70)
@@ -222,7 +222,7 @@ public class ParkingLotTest
             {
                 Method m = c.getDeclaredMethod("setNumCars", int.class);
                 m.invoke(t2, -3);
-                m = c.getDeclaredMethod("getNumCars", null);
+                m = c.getDeclaredMethod("getNumCars");
                 int tempNum = (int)m.invoke(t2);
 
                 if (tempNum < 0)
@@ -292,9 +292,9 @@ public class ParkingLotTest
             System.out.println("Now testing fillLot method");
             try
             {
-                Method m = c2.getDeclaredMethod("fillLot", null);
+                Method m = c2.getDeclaredMethod("fillLot");
                 Object tempPL = m.invoke(t3);
-                Method m2 = c.getDeclaredMethod("getNumCars", null);
+                Method m2 = c.getDeclaredMethod("getNumCars");
                 int tempNum = (int)m2.invoke(tempPL);
 
                 if(tempNum != 400)
